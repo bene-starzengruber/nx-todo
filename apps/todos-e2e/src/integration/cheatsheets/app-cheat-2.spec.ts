@@ -1,7 +1,8 @@
-import { TodoPage } from '../support/todo.page';
+import { TodoPage } from '../../support/cheat/todo-cheat.page';
 
 describe('todos', () => {
 
+  // create page
   const page = new TodoPage();
   const action = page.action;
   const assert = page.assert;
@@ -9,6 +10,7 @@ describe('todos', () => {
   before(() => cy.visit('/'));
 
   beforeEach(() => {
+    // custom command
     cy.deleteAllTodos();
     cy.visit('/');
     assert.todos([]);
@@ -24,8 +26,6 @@ describe('todos', () => {
     action.toggleComplete('todo 1');
     action.filter('open');
     assert.todos(['todo 2']);
-    action.filter('done');
-    assert.todos(['todo 1']);
     action.filter('all');
     assert.todos(['todo 1', 'todo 2']);
   });

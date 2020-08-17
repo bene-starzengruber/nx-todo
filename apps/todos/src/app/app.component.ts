@@ -37,7 +37,10 @@ export class AppComponent implements OnInit {
   addTodo() {
     this.todoService.addTodo(this.newTodoText).subscribe(newTodo => {
       this.getTodos();
-      this.newTodoText = '';
+      // show automatic retry
+      setTimeout(() => {
+        this.newTodoText = '';
+      });
     });
   }
 

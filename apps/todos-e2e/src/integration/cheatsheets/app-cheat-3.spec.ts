@@ -1,4 +1,4 @@
-import { TodoPage } from '../support/todo.page';
+import { TodoPage } from '../../support/cheat/todo-cheat.page';
 
 describe('todos', () => {
 

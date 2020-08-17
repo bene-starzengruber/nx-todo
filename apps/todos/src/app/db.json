@@ -6,19 +6,9 @@
       "completed": true
     },
     {
-      "title": "asdf",
+      "title": "todo 2",
       "completed": false,
-      "id": 13
-    },
-    {
-      "title": "sdfh",
-      "completed": false,
-      "id": 14
-    },
-    {
-      "title": "asdf",
-      "completed": false,
-      "id": 15
+      "id": 2
     }
   ]
 }
