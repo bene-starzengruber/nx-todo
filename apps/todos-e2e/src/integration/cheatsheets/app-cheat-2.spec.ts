@@ -20,12 +20,16 @@ describe('todos', () => {
     action.typeIntoInput('todo 1{enter}');
     assert.inputText('');
     assert.todos(['todo 1']);
+
     action.typeIntoInput('todo 2');
     action.clickAddButton();
     assert.todos(['todo 1', 'todo 2']);
+
     action.toggleComplete('todo 1');
+
     action.filter('open');
     assert.todos(['todo 2']);
+
     action.filter('all');
     assert.todos(['todo 1', 'todo 2']);
   });

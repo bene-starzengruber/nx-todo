@@ -10,15 +10,6 @@ describe('todos', () => {
     cy.get('data-test-todo').should('have.length', 0);
   })
 
-
-  it('test some other things', () => {
-
-    cy.get('[data-test-add-todo-input]')
-      .type('todo 1{enter}')
-      .should('have.value', '');
-
-  });
-
   it('should do stuff', () => {
 
     // 2. A simple test (show automatic retry setTimeout in app.component.ts)

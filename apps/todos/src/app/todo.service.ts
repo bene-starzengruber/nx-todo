@@ -12,7 +12,7 @@ export class TodoService {
   private static readonly BASE_URL = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {
-    window['todoService'] = this;
+    this.exposeToCypress('todoService', this);
   }
 
   getTodos(view: TodoView): Observable<Todo[]> {
@@ -44,6 +44,12 @@ export class TodoService {
       switchMap(todos => concat(...todos.map(todo => this.deleteTodo(todo.id)))),
       ignoreElements()
     );
+  }
+
+  private exposeToCypress(property: string, value: any) {
+    if (window['Cypress']) {
+      window[property] = value;
+    }
   }
 
 }
