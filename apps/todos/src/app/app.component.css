@@ -1,0 +1,34 @@
+/*
+ * Remove template code below
+ */
+:host {
+  display    : block;
+  font-family: sans-serif;
+  min-width  : 300px;
+  max-width  : 600px;
+  margin     : 50px auto;
+}
+
+.input {
+  display: flex;
+}
+
+.addButton {
+  flex: 0 0 auto;
+}
+
+.todo {
+  padding        : 1rem 2rem;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.deleteButton {
+  margin-left: auto;
+}
+
+.option-container {
+  display        : flex;
+  justify-content: space-evenly;
+}

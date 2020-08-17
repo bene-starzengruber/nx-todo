@@ -1,0 +1,21 @@
+<div class="input">
+  <input data-test-add-todo-input type="text" [(ngModel)]="newTodoText" (keyup.enter)="addTodo()" />
+  <a data-test-add-todo-button class="waves-effect waves-light btn-small addButton" (click)="addTodo()">Add</a>
+</div>
+
+<div class="todo card" *ngFor="let todo of todos" [attr.data-test-todo]="todo.title">
+  <label>
+    <input type="checkbox" class="filled-in" [checked]="todo.completed" (change)="toggleTodo(todo)" />
+    <span data-test-complete-todo style="margin-top: 0.5rem;"></span>
+  </label>
+  <span> {{ todo.title }}</span>
+  <a data-test-delete-todo class="waves-effect waves-light btn-small deleteButton blue-grey darken-1"
+    (click)="deleteTodo(todo.id)">Delete</a>
+</div>
+
+<div class="option-container">
+  <label *ngFor="let option of ['all', 'open', 'done']">
+    <input type="radio" [checked]="view === option" (change)="changeView(option)" />
+    <span [attr.data-test-filter]="option">{{ option }}</span>
+  </label>
+</div>
