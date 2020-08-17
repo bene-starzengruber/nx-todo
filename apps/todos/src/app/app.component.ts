@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   addTodo() {
     this.todoService.addTodo(this.newTodoText).subscribe(newTodo => {
       this.getTodos();
-      // show automatic retry
+      // increase timeout to demonstrate automatic cypress retries
       setTimeout(() => {
         this.newTodoText = '';
       });
@@ -45,9 +45,6 @@ export class AppComponent implements OnInit {
   }
 
   deleteTodo(id: string) {
-    // this.todoService.deleteAllTodos().subscribe({
-    // complete: () => this.getTodos()
-    // });
     this.todoService.deleteTodo(id).subscribe(() => {
       this.getTodos();
     });
