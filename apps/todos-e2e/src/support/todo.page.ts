@@ -48,43 +48,40 @@ export class TodoAssertions {
     });
   }
 
+  static andXMoreShown(x: number) {
+    cy.get(TodoSelect.andXMore(x));
+  }
+
+  static errorShown() {
+    cy.get(TodoSelect.errorMessage);
+  }
+
 }
 
 export class TodoServer {
 
-  static readonly baseUrl = 'http://localhost:3000';
-
-  private static todos: Todo[] = [];
-
-  static postTodo(added: string) {
-    const todo: Todo = {
+  static todosGet(nrOfTodos: number) {
+    const todos = Array.from({ length: nrOfTodos }).map((_, idx) => ({
       id: String(Math.random()),
-      title: added,
+      title: `Todo ${idx}`,
       completed: false
-    };
+    }))
 
-    cy.server();
-    cy.route({
-      url: `/todos`,
-      method: 'post',
-      response: JSON.stringify(todo),
-      onRequest: response => {
-        console.error('here', response);
-        this.todos.push(response);
-        this.getTodos();
-      }
-    });
-
-
-  }
-
-
-  static getTodos() {
     cy.server();
     cy.route({
       url: `/todos`,
       method: 'get',
-      response: JSON.stringify(this.todos)
+      response: JSON.stringify(todos)
+    });
+  }
+
+  static todosGetError() {
+    cy.server();
+    cy.route({
+      url: `/todos`,
+      method: 'get',
+      status: 500,
+      response: 'there was an error...'
     });
   }
 

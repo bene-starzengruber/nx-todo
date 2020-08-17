@@ -11,9 +11,12 @@ import { Todo } from './todo.interface';
 export class AppComponent implements OnInit {
   title = 'todos';
 
+  maxTodos = 5;
+
   newTodoText: string;
   view: TodoView = 'all';
   todos: Todo[] = [];
+  errorShown = false;
 
   constructor(private todoService: TodoService) {
 
@@ -24,7 +27,11 @@ export class AppComponent implements OnInit {
   }
 
   getTodos() {
-    this.todoService.getTodos(this.view).subscribe(todos => this.todos = todos);
+    this.todoService.getTodos(this.view).subscribe(todos => {
+      this.todos = todos;
+    }, () => {
+      this.errorShown = true;
+    });
   }
 
   addTodo() {

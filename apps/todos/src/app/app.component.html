@@ -3,7 +3,7 @@
   <a data-test-add-todo-button class="waves-effect waves-light btn-small addButton" (click)="addTodo()">Add</a>
 </div>
 
-<div class="todo card" *ngFor="let todo of todos" [attr.data-test-todo]="todo.title">
+<div class="todo card" *ngFor="let todo of todos.slice(0, maxTodos)" [attr.data-test-todo]="todo.title">
   <label>
     <input type="checkbox" class="filled-in" [checked]="todo.completed" (change)="toggleTodo(todo)" />
     <span data-test-complete-todo style="margin-top: 0.5rem;"></span>
@@ -13,9 +13,16 @@
     (click)="deleteTodo(todo.id)">Delete</a>
 </div>
 
+<div *ngIf="todos.length > maxTodos" class="todo card" [attr.data-test-and-x-more]="todos.length - maxTodos">...and
+  {{ todos.length - maxTodos }} more</div>
+
 <div class="option-container">
   <label *ngFor="let option of ['all', 'open', 'done']">
     <input type="radio" [checked]="view === option" (change)="changeView(option)" />
     <span [attr.data-test-filter]="option">{{ option }}</span>
   </label>
+</div>
+
+<div *ngIf="errorShown" data-test-error-message class="card error red">
+  <div>There was an error</div>
 </div>
