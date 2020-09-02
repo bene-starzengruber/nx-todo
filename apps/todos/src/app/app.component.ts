@@ -18,12 +18,14 @@ export class AppComponent implements OnInit {
   todos: Todo[] = [];
   errorShown = false;
 
+  showCounter = true;
+
   constructor(private todoService: TodoService) {
 
   }
 
   ngOnInit() {
-    this.getTodos()
+    // this.getTodos()
   }
 
   getTodos() {

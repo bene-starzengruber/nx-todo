@@ -1,0 +1,19 @@
+:host {
+  display : flex;
+  position: absolute;
+  top     : 0;
+  left    : 0;
+  right   : 0;
+  bottom  : 0;
+  padding : 1rem;
+}
+
+.settings {
+  border      : 1px solid grey;
+  padding     : 1rem;
+  margin-right: 2rem;
+}
+
+.btn-small {
+  margin-right: 1rem;
+}

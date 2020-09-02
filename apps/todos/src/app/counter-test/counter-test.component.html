@@ -1,0 +1,10 @@
+<div class="settings">
+  <a data-test-show-counter class="waves-effect waves-light btn-small" (click)="toggleComponent(true)">Show</a>
+  <a data-test-hide-counter class="waves-effect waves-light btn-small" (click)="toggleComponent(false)">Hide</a>
+</div>
+
+
+
+
+
+<counter *ngIf="counterShown"></counter>
