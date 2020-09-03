@@ -45,4 +45,11 @@
 //     cy.get('[data-test-hide-counter]').click();
 //   }
 
+// function mockCacheService() {
+//   cy.getComponent<CounterComponent>('counter')
+//     .then(component => {
+//       component['cacheService']['getRandomNumber'] = () => 700;
+//     })
+// }
+
 // });

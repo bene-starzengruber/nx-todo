@@ -1,3 +1,4 @@
+import { CounterComponent } from './../../../../todos/src/app/counter/counter.component';
 import { CountPage } from '../../support/count.page';
 import { CountValidation } from '../../../../todos/src/app/counter/counter.component';
 

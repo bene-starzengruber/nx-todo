@@ -1,3 +1,4 @@
+import { CacheService } from './../cache.service';
 import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 export interface CountValidation {
@@ -19,6 +20,11 @@ export class CounterComponent {
   @Output() add = new EventEmitter<void>();
 
   currentColor = 'black';
+  randomNumber: number;
+
+  constructor(private cacheService: CacheService) {
+
+  }
 
   ngOnChanges({ count, validation }: SimpleChanges) {
 
@@ -32,6 +38,10 @@ export class CounterComponent {
     if (this.count > this.validation?.max) {
       this.currentColor = this.validation?.color || 'green';
     }
+  }
+
+  showRandomNumber(): void {
+    this.randomNumber = this.cacheService.getRandomNumber();
   }
 
 }
